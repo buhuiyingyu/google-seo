@@ -90,7 +90,7 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
       }
 
       // 3. 等待页面完全加载
-      await delay(2000);
+      // await delay(2000);
 
       try {
         // 7. 验证搜索工具是否已启用
@@ -103,15 +103,6 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
 
         if (!isWebSearchEnabled) {
           console.log('搜索工具可能未成功启用，尝试其他方式...');
-          
-          // 尝试直接修改 localStorage
-          try {
-            const settings = JSON.parse(localStorage.getItem('chatgpt-settings') || '{}');
-            settings.webSearchEnabled = true;
-            localStorage.setItem('chatgpt-settings', JSON.stringify(settings));
-          } catch (e) {
-            console.error('修改 localStorage 时出错:', e);
-          }
         }
 
       } catch (error) {
@@ -161,9 +152,6 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
 
         // 4. 提交问题
         const sendButton = await waitForElement(() => elements.sendButton, 10000);
-        if (!sendButton) {
-          throw new Error('找不到发送按钮', sendButton);
-        }
         console.log('点击发送按钮...');
         sendButton.click();
 
