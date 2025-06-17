@@ -140,10 +140,6 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
         }
         console.log('输入框已就绪');
 
-        // 2. 启用搜索网页功能
-        console.log('启用搜索网页功能...');
-        await enableWebSearch();
-        await delay(2000);
 
         // 3. 输入关键词
         console.log('输入关键词...');
@@ -152,12 +148,14 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
 
         // 4. 提交问题
         const sendButton = await waitForElement(() => elements.sendButton, 10000);
-        console.log('点击发送按钮...');
-        sendButton.click();
+        if (sendButton){
+          console.log('点击发送按钮...');
+          sendButton.click();
+        }
 
         // 5. 等待响应完成
         console.log('等待ChatGPT响应...');
-        await delay(30000); // 固定等待30秒
+        await delay(25000); // 固定等待30秒
         console.log('等待完成，准备保存结果...');
 
         // 6. 保存结果

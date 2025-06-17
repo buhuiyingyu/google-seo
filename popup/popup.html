@@ -8,7 +8,7 @@
   <div class="container">
     <h3>ChatGPT批量搜索</h3>
     <textarea id="keywords" placeholder="输入关键词，用逗号分隔"></textarea>
-    <div class="options">
+    <div class="options" style="display: none;">
       <label>
         <input type="checkbox" id="enableWebSearch" checked>
         启用联网搜索
@@ -18,7 +18,7 @@
         <input type="number" id="waitTime" value="10" min="5" max="60">
       </label>
     </div>
-    <button id="startSearch">开始搜索8</button>
+    <button id="startSearch">开始搜索</button>
     <div id="status"></div>
   </div>
   <script src="popup.js"></script>
