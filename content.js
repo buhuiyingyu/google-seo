@@ -198,7 +198,7 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
       element.focus();
       element.innerHTML = '';
       // 添加搜索网页的提示格式
-      const searchPrompt = `请使用搜索网页功能搜索以下内容：${text}`;
+      const searchPrompt = `Please use the search function to search the following content：${text}`;
       const textNode = document.createTextNode(searchPrompt);
       element.appendChild(textNode);
       ['input', 'change'].forEach(type => {
